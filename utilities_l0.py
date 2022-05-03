@@ -6,7 +6,12 @@ from scipy.integrate import solve_ivp
 RADIUS_EARTH = 6371008.0
 MU_EARTH = 398600441500000.0
 
-def throw_ball(altitude, speed, maxtime):
+
+def demo_fun(invalue):
+    print("This is an imported function! Your input was " + str(invalue))
+    
+
+def throw_ball(altitude, speed, maxtime=6000):
     """
     Throw a ball from +y axis (m) in +x direction (m/s), propagate to impact or maxtime
     """
