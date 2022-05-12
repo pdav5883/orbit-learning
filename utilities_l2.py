@@ -43,6 +43,25 @@ def true_anom_to_time(theta, a, e):
     return t
 
 
+# function value of kepler function for newton's method
+def kepler_function(M, e, E):
+    f = E - e * math.sin(E) - M
+    return f
+
+
+# first derivative value of kepler function (wrt E) for newton's method
+def kepler_function_prime(M, e, E):
+    f_prime = 1 - e * math.cos(E)
+    return f_prime
+
+
+# a single step in newton's method
+def newton_kepler_step(M, e, E):
+    delta_E = kepler_function(M, e, E) / kepler_function_prime(M, e, E)
+    E_next = E - delta_E
+    return E_next
+
+
 # this function creates an empty 2D plot with earth at center
 def draw_earth():
     # create figure and axis objects using matplotlib library
@@ -89,7 +108,7 @@ def draw_map():
 
 
 # add a latlon trajectory to 2D map
-def add_latlon_trajectory(lat, lon, ax=None):
+def add_latlon_trajectory(lat, lon, ax=None, color="r"):
     """
     lat/lon in as radians, plotted in degrees
     """
@@ -102,7 +121,7 @@ def add_latlon_trajectory(lat, lon, ax=None):
     lat_deg = [la * RADIAN_TO_DEGREE for la in lat]
     lon_deg = [lo * RADIAN_TO_DEGREE for lo in lon]
                           
-    ax.plot(lon_deg, lat_deg, "r", linewidth=3)
+    ax.plot(lon_deg, lat_deg, color, linewidth=3)
 
     return ax
 
