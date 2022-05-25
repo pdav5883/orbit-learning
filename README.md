@@ -1,36 +1,23 @@
 # Orbit Learning
-Lesson 1 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson1)
+Lesson 0/1 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson1)
+Lesson 2 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson2)
 
 Welcome to a short tutorial on basic orbital mechanics in Python. This repo contains several Jupyter Notebooks that walk through some orbit fundamentals and let you build simple tools to model and visualize orbits. 
 
-Not sure what a Jupyter Notebook is, or how to use Python? No problem, see Lesson 0 for a crash course. Even if you don't need the crash course, there is a visualization you might enjoy. All of the code you will interact with and write here is geared towards helping someone with a bare bones knowledge of Python, with no regard for efficiency.
+Not sure what a Jupyter Notebook is, or how to use Python? No problem, see Lesson 0 for a crash course. Even if you don't need the crash course, there is a visualization you might enjoy.
+
+Lesson 1 walks through a series of steps to get us from a simple equation describing planar orbit motion to our first attempt at visualization a satellite's ground track.
+
+Lesson 2 fixes the major mistake in our Lesson 1 ground track, then walks through the steps to solve Kepler's Equation in order to propagate orbits.
+
+All of the code you will interact with and write here is geared towards helping someone with a bare bones knowledge of Python, with almost no regard for efficiency.
 
 ## Getting Started
 Click the "launch binder" button at the top of this document to open up a JupyterLab workspace in your browser, then double click the notebook (`.ipynb` extension) in the navigation pane on the left.
 
-## Outline
-0. Crash Course - Syntax vs. way of thinking, tools vs concepts. Python as a tool vs a solution
-	1. Navigating jupyter notebook - types of cells, running cells, cells affect global memory space
-	2. Variables - how to define, name, change, dynamic types
-	3. Operations - arithmetic
-	4. Boolean logic
-	5. Lists - create, change, access
-	6. Loops
-	7. Functions
-	8. Imports with a couple examples
-	
-1. Orbit Shape
-	1. Polar Equation - master and DIY
-	2. Play with params
-	3. Ground track - master and DIY lat/lon conversion
+Alternatively you can clone this repository and run Jupyter yourself -- just make sure you have the handful of packages in `requirements.txt` installed.
 
-2. Orbits with Time
-	1. Kepler Equation
-	2. Integrating EOM - first order
-	3. Integrating EOM - RK45
-	4. Ground track with time
+## Maybe Future Work
+Lesson 3: Orbit propagation with numerical integration of equations of motion.
 
-3. Maneuvers
-	1. Rocket equation
-	2. Visualize maneuver
-	3. Hohmann transfer
+Lesson 4: Orbit maneuvers, the rocket equation, deltaV
