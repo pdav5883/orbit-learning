@@ -1,6 +1,8 @@
 # Orbit Learning
-Lesson 0/1 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson1)
-Lesson 2 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson2)
+### Lesson 0/1 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson1)
+### Lesson 2
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pdav5883/orbit-learning/lesson2)
 
 Welcome to a short tutorial on basic orbital mechanics in Python. This repo contains several Jupyter Notebooks that walk through some orbit fundamentals and let you build simple tools to model and visualize orbits. 
 
