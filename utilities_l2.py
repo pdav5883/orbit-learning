@@ -43,6 +43,40 @@ def true_anom_to_time(theta, a, e):
     return t
 
 
+# time conversion
+def time_to_mean_anom(t, a):
+    M = t * math.sqrt(MU_EARTH / a ** 3)
+    return M
+
+
+# anomaly conversion
+def mean_anom_to_eccentric_anom(M, e):
+    E = newton_kepler_solve(M, e)
+    return E
+
+
+# anomaly conversion
+def eccentric_anom_to_true_anom(E, e):
+    right_side = math.sqrt((1 + e) / (1 - e)) * math.tan(E / 2)
+    theta = 2 * math.atan(right_side)
+    
+    # due to ambiguity in arctangent, we need to do some checking on quadrant
+    if ((E < math.pi) and (theta < 0)) or ((E > math.pi) and (theta > 0)) or (E == math.pi):
+        theta = theta + math.pi
+        
+    # we also need to use modulo (remainder) to keep theta in [0,2pi] interval
+    theta = theta % (2 * math.pi)
+    
+    return theta
+
+# stacked conversions
+def time_to_true_anom(t, e, a):
+    M = time_to_mean_anom(t, a)
+    E = mean_anom_to_eccentric_anom(M, e)
+    theta = eccentric_anom_to_true_anom(E, e)
+    return theta
+
+
 # function value of kepler function for newton's method
 def kepler_function(M, e, E):
     f = E - e * math.sin(E) - M
@@ -60,6 +94,27 @@ def newton_kepler_step(M, e, E):
     delta_E = kepler_function(M, e, E) / kepler_function_prime(M, e, E)
     E_next = E - delta_E
     return E_next
+
+
+# iterate newton's method for kepler's equation until solution
+def newton_kepler_solve(M, e):
+    max_iter = 20
+    E = math.pi
+    tol = 1e-6
+    
+    i = 0
+    
+    while i < max_iter:
+        E = newton_kepler_step(M, e, E)
+        err = kepler_function(M, e, E)
+        
+        if abs(err) < tol:
+            return E
+        
+        i += 1
+        
+    print("Did not find solution for M={}, e={}".format(M,e))
+    return None
 
 
 # this function creates an empty 2D plot with earth at center
